@@ -69,10 +69,6 @@ h1 {
     animation-timing-function: ease;
 }
 
-.bar:hover  {
-    animation-play-state: paused;
-}
-
 .colored_bar(@accent) {
     background-color: desaturate(darken(@accent, 40%), 20%);
     .cover {
@@ -81,6 +77,13 @@ h1 {
     }
     .label {
         color: lighten(@accent, 5%);
+        transition: 0.5s color;
+    }
+    .label:hover {
+        color: lighten(@accent, 20%);
+    }
+    &:hover  {
+        animation-play-state: paused;
     }
 }
 
