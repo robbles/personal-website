@@ -1,11 +1,22 @@
-@import "reset.less";
+@import "cover.css";
+@import url(http://fonts.googleapis.com/css?family=Fjalla+One);
+@import url(http://fonts.googleapis.com/css?family=Roboto);
 
+/*
 @accent1: #80D1BE;
 @accent2: #FFE6A6;
 @accent3: #F2A482;
 @accent4: #F04050;
 @accent5: #B3373C;
 @accent6: #3e3e3e;
+*/
+@accent1: #2ecc71;
+@accent1_dark: #27ae60;
+@accent2: #3498db;
+@accent2_dark: #2980b9;
+
+@boxsize: 100px;
+@duration: 64s;
 
 body {
     font-family: 'Roboto', sans-serif;
@@ -15,112 +26,83 @@ h1, h2 {
     font-family: 'Fjalla One', sans-serif;
 }
 
-h1 {
-    padding: 10px 10px;
-    margin: 0px;
-    font-size: 2em;
-    color: lighten(@accent1, 20%);
-}
-
-#wrapper {
-    position: absolute;
-    left: 0;
-    top: 0;
-    height: 100%;
-    width: 100%;
-    background-color: #3e3e3e;
-    transform: translateZ(0);
-    backface-visibility: hidden;
-    perspective: 1000;
-}
-
-.bar {
-    display: block;
-    width: 100%;
-    height: 20%;
-    background-color: #3e3e3e;
-    position: relative;
-}
-
 .cover {
-    display: block;
-    position: absolute;
-    left: 0;
-    top: 0;
-    width: 100%;
-    height: 100%;
-    transition: 1s width;
 }
 
-@keyframes pulse {
+.block-links {
+}
+
+.block-link {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  margin-left: -@boxsize / 2;
+  margin-top: -@boxsize / 2;
+
+  width: @boxsize;
+  height: @boxsize;
+  line-height: @boxsize;
+
+  background: linear-gradient(to bottom, @accent1_dark, darken(@accent1_dark, 20%));
+  border: 1px solid darken(@accent1_dark, 10%);
+  border-radius: @boxsize / 2;
+
+  -webkit-animation-duration: @duration;
+  -webkit-animation-name: spin;
+  -webkit-animation-iteration-count: infinite;
+  -webkit-animation-timing-function: linear;
+}
+
+.block-link:hover {
+  background: linear-gradient(to bottom, @accent1, darken(@accent1, 20%));
+  text-decoration: none;
+}
+
+.block-link span {
+  font-size: 1.5em;
+}
+
+.circle-position-static(@angle) {
+  left: 50% + cos(@angle) * 33%;
+  top: 50% + sin(@angle) * 33%;
+}
+
+.circle-position(@angle) {
+  -webkit-animation-delay: (@angle / 360deg) * -@duration;
+}
+
+.block-link.github {
+  .circle-position(0deg);
+}
+.block-link.linkedin {
+  .circle-position(72deg);
+}
+.block-link.twitter {
+  .circle-position(144deg);
+}
+.block-link.projects {
+  .circle-position(216deg);
+}
+.block-link.photo {
+  .circle-position(288deg);
+}
+
+@-webkit-keyframes spin {
   from {
-    height: 10%;
+    -webkit-transform: rotate(0deg) translateX(300px) rotate(0deg);
   }
   to {
-    height: 20%;
+    -webkit-transform: rotate(360deg) translateX(300px) rotate(-360deg);
   }
 }
 
-.bar {
-    animation-duration: 8s;
-    animation-name: pulse;
-    animation-iteration-count: infinite;
-    animation-direction: alternate;
-    animation-timing-function: ease;
+.block-link.open {
+  background: linear-gradient(to bottom, @accent2_dark, darken(@accent2_dark, 20%));
+}
+.block-link.open:hover {
+  background: linear-gradient(to bottom, @accent2, darken(@accent2, 20%));
 }
 
-.colored_bar(@accent) {
-    background-color: desaturate(darken(@accent, 40%), 20%);
-    .cover {
-        background-color: @accent;
-        background: linear-gradient(to bottom, @accent, darken(@accent, 10%));
-    }
-    .label {
-        color: lighten(@accent, 5%);
-        transition: 0.5s color;
-    }
-    .label:hover {
-        color: lighten(@accent, 20%);
-    }
-    &:hover  {
-        animation-play-state: paused;
-    }
-}
-
-.bar:nth-child(5n+1) {
-    .colored_bar(@accent1);
-    animation-direction: alternate;
-}
-.bar:nth-child(5n+2) {
-    .colored_bar(@accent2);
-    background-color: desaturate(darken(@accent2, 60%), 60%);
-    animation-direction: alternate-reverse;
-}
-.bar:nth-child(5n+3) {
-    .colored_bar(@accent3);
-    animation-direction: alternate;
-}
-.bar:nth-child(5n+4) {
-    .colored_bar(@accent4);
-    animation-direction: alternate-reverse;
-}
-.bar:nth-child(5n+5) {
-    .colored_bar(@accent5);
-    animation-direction: alternate;
-}
-.bar:nth-child(5n+6) {
-    .colored_bar(@accent6);
-    animation-direction: alternate-reverse;
-}
-
-.bar .label {
-    font-size: 3em;
-    text-align: right;
-    padding: 20px;
-    position: absolute;
-    left: 0%; top: 50%;
-    width: 100%;
-    height: 1em;
-    margin-top: -1em;
-    text-align: center;
+.block-links.pause-animation .block-link {
+  -webkit-animation-play-state: paused;
 }

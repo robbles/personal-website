@@ -20,9 +20,12 @@ function configure(grunt) {
         tasks: ['less']
       },
 
+      css: { files: 'css/*.css' },
+      js: { files: 'js/*.js' },
+
       html: {
         files: ['*.html'],
-        tasks: ['livereload']
+        tasks: []
       }
     },
 
