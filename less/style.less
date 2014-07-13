@@ -2,14 +2,6 @@
 @import url(http://fonts.googleapis.com/css?family=Fjalla+One);
 @import url(http://fonts.googleapis.com/css?family=Roboto);
 
-/*
-@accent1: #80D1BE;
-@accent2: #FFE6A6;
-@accent3: #F2A482;
-@accent4: #F04050;
-@accent5: #B3373C;
-@accent6: #3e3e3e;
-*/
 @accent1: #2ecc71;
 @accent1_dark: #27ae60;
 @accent2: #3498db;
@@ -19,17 +11,28 @@
 @duration: 64s;
 
 body {
-    font-family: 'Roboto', sans-serif;
+  font-family: 'Roboto', sans-serif;
+  background: linear-gradient(to top, #333, black);
 }
 
 h1, h2 {
-    font-family: 'Fjalla One', sans-serif;
+  font-family: 'Fjalla One', sans-serif;
+  visibility: hidden;
+}
+
+.lead {
+    visibility: hidden;
 }
 
 .cover {
 }
 
+.btn-success {
+  -webkit-box-shadow: 2px 2px 16px fadeout(darken(@accent2_dark, 40%), 80%);
+}
+
 .block-links {
+  visibility: hidden;
 }
 
 .block-link {
@@ -43,19 +46,28 @@ h1, h2 {
   height: @boxsize;
   line-height: @boxsize;
 
-  background: linear-gradient(to bottom, @accent1_dark, darken(@accent1_dark, 20%));
-  border: 1px solid darken(@accent1_dark, 10%);
+  background: linear-gradient(to bottom, fadeout(white, 100%), fadeout(white, 90%));
+  border: 2px solid white;
   border-radius: @boxsize / 2;
 
   -webkit-animation-duration: @duration;
   -webkit-animation-name: spin;
   -webkit-animation-iteration-count: infinite;
   -webkit-animation-timing-function: linear;
+
+  -webkit-box-shadow: 2px 2px 16px fadeout(darken(@accent2_dark, 40%), 80%);
 }
 
 .block-link:hover {
-  background: linear-gradient(to bottom, @accent1, darken(@accent1, 20%));
+  background: linear-gradient(to top, fadeout(white, 100%), fadeout(white, 90%));
   text-decoration: none;
+}
+
+.block-link.open {
+  background: linear-gradient(to bottom, darken(white, 10%), white);
+  color: black;
+}
+.block-link.open:hover {
 }
 
 .block-link span {
@@ -96,13 +108,50 @@ h1, h2 {
   }
 }
 
-.block-link.open {
-  background: linear-gradient(to bottom, @accent2_dark, darken(@accent2_dark, 20%));
-}
-.block-link.open:hover {
-  background: linear-gradient(to bottom, @accent2, darken(@accent2, 20%));
-}
-
 .block-links.pause-animation .block-link {
   -webkit-animation-play-state: paused;
 }
+
+// custom background
+
+@fade: 90%;
+
+svg {
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+}
+
+path {
+  stroke: fadeout(#000, 90%);
+}
+
+circle {
+  fill: fadeout(#fff, @fade);
+  pointer-events: none;
+}
+
+/* original colors
+.q0-9 { fill: fadeout(rgb(197,27,125), @fade); }
+.q1-9 { fill: fadeout(rgb(222,119,174), @fade); }
+.q2-9 { fill: fadeout(rgb(241,182,218), @fade); }
+.q3-9 { fill: fadeout(rgb(253,224,239), @fade); }
+.q4-9 { fill: fadeout(rgb(247,247,247), @fade); }
+.q5-9 { fill: fadeout(rgb(230,245,208), @fade); }
+.q6-9 { fill: fadeout(rgb(184,225,134), @fade); }
+.q7-9 { fill: fadeout(rgb(127,188,65), @fade); }
+.q8-9 { fill: fadeout(rgb(77,146,33), @fade); }
+*/
+
+.q0-9 { fill: fadeout(#1abc9c, @fade); }
+.q1-9 { fill: fadeout(#2ecc71, @fade); }
+.q2-9 { fill: fadeout(#3498db, @fade); }
+.q3-9 { fill: fadeout(#9b59b6, @fade); }
+.q4-9 { fill: fadeout(#f1c40f, @fade); }
+.q5-9 { fill: fadeout(#e67e22, @fade); }
+.q6-9 { fill: fadeout(#e74c3c, @fade); }
+.q7-9 { fill: fadeout(#ecf0f1, @fade); }
+.q8-9 { fill: fadeout(#95a5a6, @fade); }
+
