@@ -21,11 +21,9 @@ $(function() {
 
   /* tesselation background */
   var width = 960,
-      height = 600;
-
-  var vertices = d3.range(100).map(function(d) {
-    return [Math.random() * width, Math.random() * height];
-  });
+      height = 600,
+      shift = 0,
+      vertices = [];
 
   var voronoi = d3.geom.voronoi()
       //.clipExtent([[0, 0], [width, height]]);
@@ -50,9 +48,12 @@ $(function() {
   redraw();
 
   function redraw() {
-    console.log('drawing');
+    console.log('drawing background');
 
-    var shift = (window.innerWidth - width) / 2;
+    shift = (window.innerWidth - width) / 2;
+    vertices = d3.range(100).map(function(d) {
+      return [Math.random() * width + shift, Math.random() * height];
+    });
 
     path = path
         .data(voronoi(vertices), polygon);
@@ -60,9 +61,6 @@ $(function() {
     path.exit().remove();
 
     path.enter().append("path")
-        .attr("transform", function(d) {
-          return "translate(" + shift + ", 0)";
-        })
         .attr("class", polygonClass)
         .attr("d", polygon);
 
@@ -78,9 +76,7 @@ $(function() {
       .data(vertices.slice(1))
       .enter().append("circle")
       .attr("transform", function(d) {
-        var x = d[0] + shift;
-        var y = d[1];
-        return "translate(" + [x, y] + ")";
+        return "translate(" + d + ")";
       })
       .attr("r", 1.5);
   }
