@@ -25,13 +25,11 @@ $(function() {
       shift = 0,
       vertices = [];
 
-  var voronoi = d3.geom.voronoi()
-      //.clipExtent([[0, 0], [width, height]]);
+  var voronoi = d3.geom.voronoi();
 
   var svg = d3.select(".site-background").append("svg")
       .attr("width", width)
       .attr("height", height);
-      //.on("mousemove", function() { vertices[0] = d3.mouse(this); redraw(); });
 
   var waiting = false;
   d3.select(window).on('resize', function() {
@@ -39,21 +37,25 @@ $(function() {
     waiting = true;
     setTimeout(function() {
       waiting = false;
+      makeVertices();
       redraw();
     }, 500);
   });
 
   var path = svg.append("g").selectAll("path");
 
+  makeVertices();
   redraw();
 
-  function redraw() {
-    console.log('drawing background');
-
+  function makeVertices() {
     shift = (window.innerWidth - width) / 2;
     vertices = d3.range(100).map(function(d) {
       return [Math.random() * width + shift, Math.random() * height];
     });
+  }
+
+  function redraw() {
+    console.log('drawing background');
 
     path = path
         .data(voronoi(vertices), polygon);
