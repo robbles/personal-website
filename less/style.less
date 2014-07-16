@@ -20,6 +20,15 @@ h1, h2 {
   text-transform: uppercase;
 }
 
+h2 {
+  margin-top: 0;
+}
+
+.cover-heading {
+  font-size: 64px;
+  text-shadow: 0 0 4px black;
+}
+
 .lead {
 }
 
@@ -45,6 +54,57 @@ h1, h2 {
 
 .center-content {
   -webkit-transform: rotateX(30deg);
+}
+
+.center-block-content {
+  opacity: 0;
+  visibility: hidden;
+  background: fadeout(#111, 30%);
+  position: absolute;
+  left: 50%;
+  top: 0;
+  width: 600px;
+  margin-left: -300px;
+  padding: 1.5em;
+  border-radius: 10px;
+  z-index: 4;
+  border: 1px solid black;
+
+  font-size: 16px;
+
+  .close-link {
+    position: absolute;
+    top: 0.5em;
+    right: 0.25em;
+    line-height: 0;
+    color: fadeout(white, 30%);
+    font-size: 24px;
+  }
+  .close-link:hover {
+    color: white;
+    text-decoration: none;
+  }
+
+  .section {
+    display: none;
+  }
+  .section-show {
+    display: block;
+  }
+}
+
+.center-content, .center-block-content {
+  -webkit-transition: 1s opacity;
+}
+
+.show-center-content .center-content {
+  opacity: 0;
+  visibility: hidden;
+}
+
+.show-center-content .center-block-content {
+  opacity: 1;
+  visibility: visible;
 }
 
 .btn-success {
@@ -124,7 +184,7 @@ h1, h2 {
 .block-link.projects {
   .circle-position(216deg);
 }
-.block-link.photo {
+.block-link.about {
   .circle-position(288deg);
 }
 

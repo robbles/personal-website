@@ -10,14 +10,34 @@ $(function() {
       $(this).addClass('open')
         .parent().addClass('pause-animation');
       animating = false;
+
+      openTab($(this).attr('href'));
+
     } else {
       $('.block-link.open').removeClass('open');
       $(this).parent().removeClass('pause-animation');
       animating = true;
+
+      closeTabs();
     }
 
     return false;
   });
+
+  $('.close-link').click(function() {
+    closeTabs();
+    return false;
+  })
+
+  function openTab(href) {
+    $('.section').removeClass('section-show')
+    .filter(href).addClass('section-show');
+    $('.inner').addClass('show-center-content');
+  }
+
+  function closeTabs() {
+    $('.inner').removeClass('show-center-content');
+  }
 
   /* tesselation background */
   var width = 960,
