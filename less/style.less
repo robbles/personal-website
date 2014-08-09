@@ -10,6 +10,24 @@
 @boxsize: 100px;
 @duration: 128s;
 
+.clearfix:before,
+.clearfix:after {
+    content: " "; /* 1 */
+    display: table; /* 2 */
+}
+
+.clearfix:after {
+    clear: both;
+}
+
+/**
+ * For IE 6/7 only
+ * Include this rule to trigger hasLayout and contain floats.
+ */
+.clearfix {
+    *zoom: 1;
+}
+
 body {
   font-family: 'Roboto', sans-serif;
   background: linear-gradient(to top, #333, black);
@@ -26,7 +44,6 @@ h2 {
 
 .cover-heading {
   font-size: 64px;
-  text-shadow: 0 0 4px black;
 }
 
 .lead {
@@ -49,11 +66,11 @@ h2 {
 }
 
 .cover {
-  -webkit-perspective: 20cm;
+  /*-webkit-perspective: 20cm;*/
 }
 
 .center-content {
-  -webkit-transform: rotateX(30deg);
+  /*-webkit-transform: rotateX(30deg);*/
 }
 
 .center-block-content {
@@ -120,88 +137,54 @@ h2 {
 }
 
 .block-links {
-  -webkit-perspective: 20cm;
-  -webkit-transform: translateY(-150px);
+  width: 660px;
+  margin: 0 auto;
 }
 
 .block-link {
-  position: absolute;
-  left: 50%;
-  top: 50%;
-  margin-left: -@boxsize / 2;
-  margin-top: -@boxsize / 2;
+  float: left;
+  width: 200px;
+  height: 200px;
+  margin: 10px;
 
-  width: @boxsize;
-  height: @boxsize;
-  line-height: @boxsize;
-
-  background: linear-gradient(to bottom, fadeout(white, 100%), fadeout(white, 90%));
-  border: 2px solid white;
-  border-radius: @boxsize / 2;
-
-  -webkit-animation-duration: @duration;
-  -webkit-animation-name: spin;
-  -webkit-animation-iteration-count: infinite;
-  -webkit-animation-timing-function: linear;
-
-  -webkit-box-shadow: 2px 2px 16px fadeout(darken(@accent2_dark, 40%), 80%);
+  background: fadeout(black, 90%);
+  border: 4px solid fadeout(black, 80%);
 }
 
 .block-link:hover {
-  background: linear-gradient(to top, fadeout(white, 100%), fadeout(white, 90%));
+  color: white;
   text-decoration: none;
 }
 
 .block-link.open {
-  background: linear-gradient(to bottom, darken(white, 10%), white);
-  color: black;
+
 }
 .block-link.open:hover {
+
 }
 
 .block-link span {
+  width: 100%;
+  background-color: fadeout(black, 50%);
+  display: block;
+  border-bottom: 2px solid fadeout(black, 80%);
+  line-height: 2em;
   font-size: 1.5em;
+  visibility: hidden;
+}
+.block-link:hover span {
+  visibility: visible;
 }
 
-.circle-position-static(@angle) {
-  left: 50% + cos(@angle) * 33%;
-  top: 50% + sin(@angle) * 33%;
-}
-
-.circle-position(@angle) {
-  -webkit-animation-delay: (@angle / 360deg) * -@duration;
-}
+// Custom icons
 
 .block-link.github {
-  .circle-position(0deg);
-}
-.block-link.linkedin {
-  .circle-position(72deg);
-}
-.block-link.twitter {
-  .circle-position(144deg);
-}
-.block-link.projects {
-  .circle-position(216deg);
-}
-.block-link.interests {
-  .circle-position(288deg);
+    background-image: url('../img/github-icon-light.svg');
+    background-repeat: no-repeat;
+    background-size: cover;
 }
 
-@-webkit-keyframes spin {
-  from {
-    -webkit-transform: rotateX(30deg) rotate(0deg) translateX(300px) rotate(0deg);
-  }
-  to {
-    -webkit-transform: rotateX(30deg) rotate(360deg) translateX(300px) rotate(-360deg);
-  }
-}
-
-.block-links.pause-animation .block-link {
-  -webkit-animation-play-state: paused;
-}
-
-// custom background
+// Custom background
 
 @fade: 90%;
 
