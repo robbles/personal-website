@@ -30,7 +30,6 @@
           <div class="masthead clearfix">
             <div class="inner">
               <h3 class="masthead-brand">
-                <img src="/img/profile.jpg" alt="me" />
               </h3>
               <ul class="nav masthead-nav">
                 <li class="active"><a href="#">Home</a></li>
@@ -46,47 +45,23 @@
               <h1 class="cover-heading">Rob O'Dwyer</h1>
               <p class="lead">is a full-stack developer / entrepreneur<br>from Victoria, Canada.</p>
               <p class="lead">
-              <a href="#" class="btn btn-lg btn-success">Get in touch</a>
+              <a href="#" class="btn btn-lg btn-contact md-trigger" data-modal="modal-email">Get in touch</a>
               </p>
             </div>
 
-            <div class="center-block-content">
-              <a href="#" class="close-link">&times;</a>
-              <div id="github" class="section">
-                <h2>GitHub</h2>
-                Lorem ipsum dolor sit amet, consectetur adipiscing elit.  Etiam lacus ligula, accumsan id imperdiet rhoncus, dapibus vitae arcu.  Nulla non quam erat, luctus consequat nisi.  Integer hendrerit lacus sagittis erat fermentum tincidunt.  Cras vel dui neque.  In sagittis commodo luctus.  Mauris non metus dolor, ut suscipit dui.  Aliquam mauris lacus, laoreet et consequat quis, bibendum id ipsum.  Donec gravida, diam id imperdiet cursus, nunc nisl bibendum sapien, eget tempor neque elit in tortor.
-              </div>
-              <div id="linkedin" class="section">
-                <h2>LinkedIn</h2>
-                Lorem ipsum dolor sit amet, consectetur adipiscing elit.  Etiam lacus ligula, accumsan id imperdiet rhoncus, dapibus vitae arcu.  Nulla non quam erat, luctus consequat nisi.  Integer hendrerit lacus sagittis erat fermentum tincidunt.  Cras vel dui neque.  In sagittis commodo luctus.  Mauris non metus dolor, ut suscipit dui.  Aliquam mauris lacus, laoreet et consequat quis, bibendum id ipsum.  Donec gravida, diam id imperdiet cursus, nunc nisl bibendum sapien, eget tempor neque elit in tortor.
-              </div>
-              <div id="twitter" class="section">
-                <h2>Twitter</h2>
-                Lorem ipsum dolor sit amet, consectetur adipiscing elit.  Etiam lacus ligula, accumsan id imperdiet rhoncus, dapibus vitae arcu.  Nulla non quam erat, luctus consequat nisi.  Integer hendrerit lacus sagittis erat fermentum tincidunt.  Cras vel dui neque.  In sagittis commodo luctus.  Mauris non metus dolor, ut suscipit dui.  Aliquam mauris lacus, laoreet et consequat quis, bibendum id ipsum.  Donec gravida, diam id imperdiet cursus, nunc nisl bibendum sapien, eget tempor neque elit in tortor.
-              </div>
-              <div id="projects" class="section">
-                <h2>Projects</h2>
-                Lorem ipsum dolor sit amet, consectetur adipiscing elit.  Etiam lacus ligula, accumsan id imperdiet rhoncus, dapibus vitae arcu.  Nulla non quam erat, luctus consequat nisi.  Integer hendrerit lacus sagittis erat fermentum tincidunt.  Cras vel dui neque.  In sagittis commodo luctus.  Mauris non metus dolor, ut suscipit dui.  Aliquam mauris lacus, laoreet et consequat quis, bibendum id ipsum.  Donec gravida, diam id imperdiet cursus, nunc nisl bibendum sapien, eget tempor neque elit in tortor.
-              </div>
-              <div id="interests" class="section">
-                <h2>Interests</h2>
-                Lorem ipsum dolor sit amet, consectetur adipiscing elit.  Etiam lacus ligula, accumsan id imperdiet rhoncus, dapibus vitae arcu.  Nulla non quam erat, luctus consequat nisi.  Integer hendrerit lacus sagittis erat fermentum tincidunt.  Cras vel dui neque.  In sagittis commodo luctus.  Mauris non metus dolor, ut suscipit dui.  Aliquam mauris lacus, laoreet et consequat quis, bibendum id ipsum.  Donec gravida, diam id imperdiet cursus, nunc nisl bibendum sapien, eget tempor neque elit in tortor.
-              </div>
-            </div>
-
             <div class="block-links clearfix">
-              <a href="#github" class="block-link github"><span>GitHub</span></a>
-              <a href="#linkedin" class="block-link linkedin"><span>LinkedIn</span></a>
-              <a href="#twitter" class="block-link twitter"><span>Twitter</span></a>
-              <a href="#projects" class="block-link projects"><span>Projects</span></a>
-              <a href="#interests" class="block-link interests"><span>Interests</span></a>
+              <a href="https://github.com/robbles/" class="block-link github"><span>GitHub</span></a>
+              <a href="https://www.linkedin.com/profile/view?id=49696407" class="block-link linkedin"><span>LinkedIn</span></a>
+              <a href="https://twitter.com/odwyerrob" class="block-link twitter"><span>Twitter</span></a>
+
+              <a href="#" class="block-link coming-soon"><span>Coming Soon...</span></a>
+              <a href="#" class="block-link coming-soon"><span>Coming Soon...</span></a>
+              <a href="#" class="block-link coming-soon"><span>Coming Soon...</span></a>
 
               <a href="#" class="block-link empty"><span>Placeholder</span></a>
               <a href="#" class="block-link empty"><span>Placeholder</span></a>
               <a href="#" class="block-link empty"><span>Placeholder</span></a>
-              <a href="#" class="block-link empty"><span>Placeholder</span></a>
-              <a href="#" class="block-link empty"><span>Placeholder</span></a>
-              <a href="#" class="block-link empty"><span>Placeholder</span></a>
+
             </div>
 
           </div>
@@ -102,11 +77,25 @@
 
     </div>
 
+    <div class="md-modal md-effect-scale-up" id="modal-email">
+      <div class="md-content">
+        <h3>Get in Touch</h3>
+        <div>
+          <p>Please enter your contact details in the form below.</p>
+
+          <button class="btn btn-lg md-close">Close me!</button>
+        </div>
+      </div>
+    </div>
+
+    <div class="md-overlay"></div>
+
     <!-- Bootstrap core JavaScript
     ================================================== -->
     <!-- Placed at the end of the document so the pages load faster -->
     <script src="js/jquery.min.js"></script>
     <script src="js/d3.min.js" type="text/javascript"></script>
+    <script src="js/modalEffects.js" type="text/javascript"></script>
     <script src="js/app.js" type="text/javascript"></script>
 
   </body>

@@ -1,4 +1,5 @@
 @import "cover.css";
+@import "prefixer.less";
 @import url(http://fonts.googleapis.com/css?family=Fjalla+One);
 @import url(http://fonts.googleapis.com/css?family=Roboto);
 
@@ -31,18 +32,21 @@
 body {
   font-family: 'Roboto', sans-serif;
   background-color: #222;
-
-  /* TODO: fix repeating linear gradient */
-  /*background: linear-gradient(to top, #333, black);*/
 }
 
 h1, h2 {
-  font-family: 'Fjalla One', sans-serif;
+  font-family: 'Graublau Web', sans-serif;
+  font-weight: bold;
   text-transform: uppercase;
+  .text-shadow(0 0 6px fadeout(black, 50%))
 }
 
 h2 {
   margin-top: 0;
+}
+
+.masthead-nav > li > a {
+  font-size: 16px;
 }
 
 .cover-heading {
@@ -73,52 +77,13 @@ h2 {
 }
 
 .cover {
-  /*-webkit-perspective: 20cm;*/
 }
 
 .center-content {
-  /*-webkit-transform: rotateX(30deg);*/
-}
-
-.center-block-content {
-  opacity: 0;
-  visibility: hidden;
-  background: fadeout(#111, 30%);
-  position: absolute;
-  left: 50%;
-  top: 0;
-  width: 600px;
-  margin-left: -300px;
-  padding: 1.5em;
-  border-radius: 10px;
-  z-index: 4;
-  border: 1px solid black;
-
-  font-size: 16px;
-
-  .close-link {
-    position: absolute;
-    top: 0.5em;
-    right: 0.25em;
-    line-height: 0;
-    color: fadeout(white, 30%);
-    font-size: 24px;
-  }
-  .close-link:hover {
-    color: white;
-    text-decoration: none;
-  }
-
-  .section {
-    display: none;
-  }
-  .section-show {
-    display: block;
-  }
 }
 
 .center-content, .center-block-content {
-  -webkit-transition: 1s opacity;
+  .transition(1s opacity);
 }
 
 .show-center-content .center-content {
@@ -131,16 +96,17 @@ h2 {
   visibility: visible;
 }
 
-.btn-success {
-  -webkit-box-shadow: 2px 2px 16px fadeout(darken(@accent2_dark, 40%), 80%);
-  background: linear-gradient(to bottom, fadeout(white, 100%), fadeout(white, 90%));
+.btn-contact {
+  .box-shadow(2px 2px 16px fadeout(darken(@accent2_dark, 40%), 80%));
   border: 2px solid white;
+  color: #eee;
 }
 
-.btn-success:hover {
-  -webkit-box-shadow: 2px 2px 16px fadeout(darken(@accent2_dark, 40%), 80%);
+.btn-contact:hover {
   background: linear-gradient(to top, fadeout(white, 100%), fadeout(white, 90%));
+  color: white;
   border: 2px solid white;
+  .box-shadow(inset 0 0 10px fadeout(white, 90%));
 }
 
 .block-links {
@@ -155,45 +121,64 @@ h2 {
   margin: 10px;
 
   background: fadeout(black, 90%);
-  border: 4px solid fadeout(black, 80%);
-}
+  background-repeat: no-repeat;
+  background-size: cover;
 
-.block-link:hover {
-  color: white;
-  text-decoration: none;
-}
+  .border-radius(10px);
 
-.block-link.open {
+  &:hover {
+    color: white;
+    text-decoration: none;
 
-}
-.block-link.open:hover {
+    span {
+      visibility: visible;
+    }
+  }
 
-}
+  span {
+    width: 100%;
+    background-color: fadeout(black, 50%);
+    display: block;
+    border-bottom: 2px solid fadeout(black, 80%);
+    line-height: 2em;
+    font-size: 1.5em;
+    visibility: hidden;
+  }
 
-.block-link span {
-  width: 100%;
-  background-color: fadeout(black, 50%);
-  display: block;
-  border-bottom: 2px solid fadeout(black, 80%);
-  line-height: 2em;
-  font-size: 1.5em;
-  visibility: hidden;
-}
-.block-link:hover span {
-  visibility: visible;
+  &.active {
+    width: 640px;
+    height: 600px;
+  }
 }
 
 // Custom icons
 
 .block-link.github {
     background-image: url('../img/github-icon-light.svg');
-    background-repeat: no-repeat;
-    background-size: cover;
 }
+
+.block-link.linkedin {
+    background-image: url('../img/linkedin-icon.svg');
+}
+
+.block-link.twitter {
+    background-image: url('../img/twitter-icon.svg');
+}
+
+.block-link.coming-soon span {
+  visibility: visible;
+  font-family: 'Graublau Web', sans-serif;
+  background: none;
+  border: none;
+  line-height: 200px;
+  text-transform: lowercase;
+  opacity: 0.3;
+}
+
 
 // Custom background
 
-@fade: 90%;
+@fade: 80%;
 
 svg {
     position: absolute;
@@ -213,12 +198,152 @@ circle {
   pointer-events: none;
 }
 
-.q0-9 { fill: fadeout(#1abc9c, @fade); }
-.q1-9 { fill: fadeout(#2ecc71, @fade); }
-.q2-9 { fill: fadeout(#3498db, @fade); }
-.q3-9 { fill: fadeout(#9b59b6, @fade); }
-.q4-9 { fill: fadeout(#f1c40f, @fade); }
-.q5-9 { fill: fadeout(#e67e22, @fade); }
-.q6-9 { fill: fadeout(#e74c3c, @fade); }
-.q7-9 { fill: fadeout(#ecf0f1, @fade); }
-.q8-9 { fill: fadeout(#95a5a6, @fade); }
+.q0-9 { fill: fadeout(#ffffd9, @fade); }
+.q1-9 { fill: fadeout(#edf8b1, @fade); }
+.q2-9 { fill: fadeout(#c7e9b4, @fade); }
+.q3-9 { fill: fadeout(#7fcdbb, @fade); }
+.q4-9 { fill: fadeout(#41b6c4, @fade); }
+.q5-9 { fill: fadeout(#1d91c0, @fade); }
+.q6-9 { fill: fadeout(#225ea8, @fade); }
+.q7-9 { fill: fadeout(#253494, @fade); }
+.q8-9 { fill: fadeout(#081d58, @fade); }
+
+
+
+// CSS3 Modal
+.md-modal {
+	position: fixed;
+	top: 50%;
+	left: 50%;
+	width: 50%;
+	max-width: 630px;
+	min-width: 320px;
+	height: auto;
+	z-index: 2000;
+	visibility: hidden;
+	-webkit-backface-visibility: hidden;
+	-moz-backface-visibility: hidden;
+	backface-visibility: hidden;
+	-webkit-transform: translateX(-50%) translateY(-50%);
+	-moz-transform: translateX(-50%) translateY(-50%);
+	-ms-transform: translateX(-50%) translateY(-50%);
+	transform: translateX(-50%) translateY(-50%);
+}
+
+.md-show {
+	visibility: visible;
+}
+
+.md-overlay {
+	position: fixed;
+	width: 100%;
+	height: 100%;
+	visibility: hidden;
+	top: 0;
+	left: 0;
+	z-index: 1000;
+	opacity: 0;
+	background: rgba(0,0,0,0.8);
+	-webkit-transition: all 0.3s;
+	-moz-transition: all 0.3s;
+	transition: all 0.3s;
+}
+
+.md-show ~ .md-overlay {
+	opacity: 1;
+	visibility: visible;
+}
+
+/* Modal content styles */
+.md-content {
+	color: #fff;
+	background: #225ea8;
+	position: relative;
+	border-radius: 3px;
+	margin: 0 auto;
+}
+
+.md-content h3 {
+	margin: 0;
+	padding: 0.4em;
+	text-align: center;
+	font-size: 2.4em;
+	font-weight: 300;
+	opacity: 0.8;
+	background: #1d91c0;
+	border-radius: 3px 3px 0 0;
+}
+
+.md-content > div {
+	padding: 15px 40px 30px;
+	margin: 0;
+	font-weight: 300;
+	font-size: 1.15em;
+}
+
+.md-content > div p {
+	margin: 0;
+	padding: 10px 0;
+}
+
+.md-content > div ul {
+	margin: 0;
+	padding: 0 0 30px 20px;
+}
+
+.md-content > div ul li {
+	padding: 5px 0;
+}
+
+.md-content button {
+	display: block;
+	margin: 0 auto;
+	font-size: 0.8em;
+}
+
+.md-content .md-close {
+  background: none;
+  border: 1px solid white;
+}
+
+.md-content .md-close:hover {
+  color: white;
+}
+
+/* Effect 5: fall */
+.md-effect-fall.md-modal {
+	-webkit-perspective: 1300px;
+	-moz-perspective: 1300px;
+	perspective: 1300px;
+}
+
+.md-effect-fall .md-content {
+	-webkit-transform-style: preserve-3d;
+	-moz-transform-style: preserve-3d;
+	transform-style: preserve-3d;
+	-webkit-transform: translateZ(600px) rotateX(20deg); 
+	-moz-transform: translateZ(600px) rotateX(20deg); 
+	-ms-transform: translateZ(600px) rotateX(20deg); 
+	transform: translateZ(600px) rotateX(20deg); 
+	opacity: 0;
+}
+
+/* Effect 1: Fade in and scale up */
+.md-effect-scale-up .md-content {
+	-webkit-transform: scale(0.7);
+	-moz-transform: scale(0.7);
+	-ms-transform: scale(0.7);
+	transform: scale(0.7);
+	opacity: 0;
+	-webkit-transition: all 0.3s;
+	-moz-transition: all 0.3s;
+	transition: all 0.3s;
+}
+
+.md-show.md-effect-scale-up .md-content {
+	-webkit-transform: scale(1);
+	-moz-transform: scale(1);
+	-ms-transform: scale(1);
+	transform: scale(1);
+	opacity: 1;
+}

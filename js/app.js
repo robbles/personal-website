@@ -1,15 +1,9 @@
 /* jshint asi:true */
 $(function() {
 
-  function openTab(href) {
-    $('.section').removeClass('section-show')
-    .filter(href).addClass('section-show');
-    $('.inner').addClass('show-center-content');
-  }
-
-  function closeTabs() {
-    $('.inner').removeClass('show-center-content');
-  }
+  $('.block-link').on('click', function() {
+    return true;
+  })
 
   /* tesselation background */
   var width = 960,
