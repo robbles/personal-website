@@ -5,9 +5,6 @@ $(function() {
     return true;
   })
 
-  // Don't submit form on close button
-  $('.md-close').on('click', function() { return false; })
-
   // Decode email in form action to prevent scraping
   var action = atob($('form[encoded-action]').attr('encoded-action'));
   $('form[encoded-action]').attr('action', action);

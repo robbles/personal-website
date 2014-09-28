@@ -31,12 +31,20 @@ var ModalEffects = (function() {
         $(modal).addClass('md-show');
 				overlay.removeEventListener( 'click', removeModalHandler );
 				overlay.addEventListener( 'click', removeModalHandler );
+
+        ev.preventDefault();
+        return false;
 			});
 
-			close.addEventListener( 'click', function( ev ) {
-				ev.stopPropagation();
-				removeModalHandler();
-			});
+      if(close) {
+        close.addEventListener( 'click', function( ev ) {
+          ev.stopPropagation();
+          removeModalHandler();
+
+          ev.preventDefault();
+          return false;
+        });
+      }
 
 		} );
 
