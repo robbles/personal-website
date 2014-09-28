@@ -3,13 +3,10 @@
 @import url(http://fonts.googleapis.com/css?family=Fjalla+One);
 @import url(http://fonts.googleapis.com/css?family=Roboto);
 
-@accent1: #2ecc71;
-@accent1_dark: #27ae60;
-@accent2: #3498db;
-@accent2_dark: #2980b9;
+@accent1: #225ea8;
+@accent2: #1d91c0;
 
-@boxsize: 100px;
-@duration: 128s;
+@fade: 80%;
 
 .clearfix:before,
 .clearfix:after {
@@ -27,6 +24,11 @@
  */
 .clearfix {
     *zoom: 1;
+}
+
+/* Bootstrap fixes */
+.form-horizontal .control-label-lg {
+  padding-top: 14.3px;
 }
 
 body {
@@ -97,7 +99,7 @@ h2 {
 }
 
 .btn-contact {
-  .box-shadow(2px 2px 16px fadeout(darken(@accent2_dark, 40%), 80%));
+  .box-shadow(2px 2px 16px fadeout(darken(@accent2, 40%), 80%));
   border: 2px solid white;
   color: #eee;
 }
@@ -178,8 +180,6 @@ h2 {
 
 // Custom background
 
-@fade: 80%;
-
 svg {
     position: absolute;
     left: 0;
@@ -257,7 +257,7 @@ circle {
 /* Modal content styles */
 .md-content {
 	color: #fff;
-	background: #225ea8;
+	background: darken(desaturate(@accent1, 30%), 10%);
 	position: relative;
 	border-radius: 3px;
 	margin: 0 auto;
@@ -270,15 +270,13 @@ circle {
 	font-size: 2.4em;
 	font-weight: 300;
 	opacity: 0.8;
-	background: #1d91c0;
+	background: darken(desaturate(@accent2, 30%), 10%);
 	border-radius: 3px 3px 0 0;
 }
 
 .md-content > div {
 	padding: 15px 40px 30px;
 	margin: 0;
-	font-weight: 300;
-	font-size: 1.15em;
 }
 
 .md-content > div p {
@@ -293,12 +291,6 @@ circle {
 
 .md-content > div ul li {
 	padding: 5px 0;
-}
-
-.md-content button {
-	display: block;
-	margin: 0 auto;
-	font-size: 0.8em;
 }
 
 .md-content .md-close {

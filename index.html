@@ -47,7 +47,7 @@
               <h1 class="cover-heading">Rob O'Dwyer</h1>
               <p class="lead">is a full-stack developer / entrepreneur<br>from Victoria, Canada.</p>
               <p class="lead">
-              <a href="#" class="btn btn-lg btn-contact md-trigger" data-modal="modal-email">Get in touch</a>
+                <a href="#" class="btn btn-lg btn-contact md-trigger" data-modal="modal-email">Get in touch</a>
               </p>
             </div>
 
@@ -83,9 +83,25 @@
       <div class="md-content">
         <h3>Get in Touch</h3>
         <div>
-          <p>Please enter your contact details in the form below.</p>
 
-          <button class="btn btn-lg md-close">Close me!</button>
+          <form method="post" encoded-action="Ly9mb3Jtcy5icmFjZS5pby9yb2JAb2R3eWVyLmNj" role="form" class="form-horizontal">
+            <div class="form-group">
+              <label for="name" class="col-sm-3 control-label control-label-lg">Your Name</label>
+              <div class="col-sm-9">
+                <input type="text" name="name" class="form-control input-lg">
+              </div>
+            </div>
+            <div class="form-group form-group-lg">
+              <label for="email" class="col-sm-3 control-label control-label-lg">Email Address</label>
+              <div class="col-sm-9">
+                <input type="email" name="_replyto" class="form-control input-lg">
+              </div>
+            </div>
+
+            <button class="btn btn-lg md-close">Cancel</button>
+            <button type="submit" class="btn btn-lg btn-default md-submit">Send</button>
+          </form>
+
         </div>
       </div>
     </div>
